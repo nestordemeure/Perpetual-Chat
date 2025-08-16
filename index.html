@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perpetual Chat</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-view="landing">
+    <!-- Landing View -->
+    <div id="view-landing" class="view">
+        <div class="container">
+            <h1>Perpetual Chat</h1>
+            <p>Enter your OpenAI API key to start chatting</p>
+            
+            <div class="form-group">
+                <label for="apiKey">API Key (required)</label>
+                <input type="password" id="apiKey" placeholder="sk-...">
+            </div>
+            
+            <div class="form-group">
+                <label for="systemPrompt">System Prompt (optional)</label>
+                <textarea id="systemPrompt" placeholder="You are a helpful assistant..."></textarea>
+            </div>
+            
+            <div class="button-group">
+                <button id="startChat" class="btn btn-primary">Start Chat</button>
+                <button id="loadFromFile" class="btn btn-secondary">Load Chat from File</button>
+            </div>
+            
+            <input type="file" id="fileInput" accept=".json" style="display: none;">
+        </div>
+    </div>
+
+    <!-- Chat View -->
+    <div id="view-chat" class="view">
+        <div class="chat-header">
+            <button id="newChat" class="btn btn-secondary">New Chat</button>
+        </div>
+        
+        <div id="messagesPanel" class="messages-panel">
+            <!-- Messages will be rendered here -->
+        </div>
+        
+        <div class="typing-indicator" id="typingIndicator" style="display: none;">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+        
+        <div class="error-banner" id="errorBanner" style="display: none;"></div>
+        
+        <div class="composer">
+            <textarea id="composer" placeholder="Type your message..." rows="3"></textarea>
+            <button id="sendButton" class="btn btn-primary">Send</button>
+        </div>
+    </div>
+
+    <script src="js/storage.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/chat.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
