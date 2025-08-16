@@ -278,4 +278,28 @@ textarea {
     .button-group {
         flex-direction: column;
     }
+    
+    /* Mobile keyboard fixes */
+    body {
+        height: 100vh;
+        height: 100dvh; /* Dynamic viewport height for mobile */
+    }
+    
+    #view-chat {
+        height: 100vh;
+        height: 100dvh;
+    }
+    
+    /* Ensure composer stays visible when keyboard is open */
+    .composer {
+        position: sticky;
+        bottom: 0;
+        background-color: #121212;
+        z-index: 100;
+    }
+    
+    /* Adjust messages panel to account for keyboard */
+    .messages-panel {
+        padding-bottom: 0.5rem;
+    }
 }

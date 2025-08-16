@@ -22,6 +22,7 @@ function initializeUI() {
     };
     
     setupEventListeners();
+    setupMobileKeyboardHandling();
 }
 
 function setupEventListeners() {
@@ -205,6 +206,56 @@ function focusComposer() {
 function prefillLandingForm(state) {
     elements.apiKeyInput.value = state.apiKey || '';
     elements.systemPromptInput.value = state.systemPrompt || '';
+}
+
+function setupMobileKeyboardHandling() {
+    // Handle mobile keyboard appearance/disappearance
+    if ('visualViewport' in window) {
+        // Modern approach using Visual Viewport API
+        window.visualViewport.addEventListener('resize', () => {
+            const viewport = window.visualViewport;
+            const isKeyboardOpen = viewport.height < window.innerHeight * 0.75;
+            
+            if (isKeyboardOpen) {
+                // Keyboard is open - ensure composer is visible
+                setTimeout(() => {
+                    elements.composer.scrollIntoView({ 
+                        behavior: 'smooth', 
+                        block: 'end' 
+                    });
+                }, 150);
+            }
+        });
+    } else {
+        // Fallback for older browsers
+        let initialViewportHeight = window.innerHeight;
+        
+        window.addEventListener('resize', () => {
+            const currentHeight = window.innerHeight;
+            const heightDifference = initialViewportHeight - currentHeight;
+            
+            // If height decreased significantly (keyboard appeared)
+            if (heightDifference > 150) {
+                setTimeout(() => {
+                    elements.composer.scrollIntoView({ 
+                        behavior: 'smooth', 
+                        block: 'end' 
+                    });
+                }, 150);
+            }
+        });
+    }
+    
+    // Handle focus events on composer
+    elements.composer.addEventListener('focus', () => {
+        // Small delay to ensure keyboard is fully open
+        setTimeout(() => {
+            elements.composer.scrollIntoView({ 
+                behavior: 'smooth', 
+                block: 'end' 
+            });
+        }, 300);
+    });
 }
 
 // Export to global scope
