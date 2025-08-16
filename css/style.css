@@ -51,6 +51,14 @@ p {
     color: #b3b3b3;
 }
 
+.version {
+    text-align: center;
+    font-size: 0.75rem;
+    color: #666;
+    margin-bottom: 1.5rem;
+    font-style: italic;
+}
+
 .form-group {
     margin-bottom: 1.5rem;
 }

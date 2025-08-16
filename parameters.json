@@ -1,4 +1,5 @@
 {
+  "version": "1.02",
   "model": "gpt-4o",
   "maxMessagesForAPI": 50,
   "dailySavePeriodHours": 24

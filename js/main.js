@@ -29,6 +29,12 @@ async function initializeApp() {
         // Initialize UI
         window.UiModule.initializeUI();
         
+        // Display version number
+        const versionDisplay = document.getElementById('versionDisplay');
+        if (versionDisplay && window.__PARAMS__.version) {
+            versionDisplay.textContent = `v${window.__PARAMS__.version}`;
+        }
+        
         // Load state from localStorage
         const state = window.StorageModule.loadState();
         
