@@ -35,13 +35,7 @@ function setupEventListeners() {
     elements.sendButton.addEventListener('click', handleSendMessage);
     elements.newChatBtn.addEventListener('click', handleNewChat);
     
-    // Composer events
-    elements.composer.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' && !e.shiftKey) {
-            e.preventDefault();
-            handleSendMessage();
-        }
-    });
+    // Composer events - Enter key no longer sends messages
     
     // Auto-resize composer
     elements.composer.addEventListener('input', () => {
