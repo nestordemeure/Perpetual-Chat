@@ -1,6 +1,6 @@
 {
   "version": "1.03",
-  "model": "gpt-4o-mini",
+  "model": "gpt-4o",
   "maxMessagesForAPI": 100,
   "dailySavePeriodHours": 24
 }
